@@ -1,6 +1,6 @@
 import { Contract, ethers } from "ethers";
 import './Web3.css';
-import CharacterJson from '../../character/artifacts/contracts/character.sol/Character.json';
+import CharacterJson from '../contracts/character.sol/Character.json';
 
 // A Web3Provider wraps a standard Web3 provider, which is
 // what Metamask injects as window.ethereum into each page

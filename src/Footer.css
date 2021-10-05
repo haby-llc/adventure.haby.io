@@ -1,0 +1,32 @@
+.App-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 2vmin 8vmax;
+}
+
+.Footer-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1em;
+}
+
+.Footer-copyright {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-top: #4c4c4c;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.Footer-svg {
+  height: 2.5vmin;
+}
+
+.Copyright {
+  color:white;
+  font-size: calc(10px + 0.5vmin);
+}

@@ -1,0 +1,76 @@
+.Body {
+  color: #FFF;
+  padding: 0 4vmax;
+}
+
+.Body-above-fold {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.App-link {
+  color: #3C58AC;
+  font-weight: 700;
+}
+
+.Title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Title-header {
+  margin: 0;
+  text-align: center;
+  font-size: 4vmax;
+}
+
+.Title-text {
+  margin-bottom: 0;
+  text-align: center;
+  color: #BFBFBF;
+}
+
+.Coming-soon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Coming-soon-img {
+  max-width: 40vw;
+  filter: grayscale(100%);
+  opacity: 50%;
+}
+
+.Cta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Cta-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1vmax 2vmax;
+  background-color: rgb(250,88,83);
+  background-image: linear-gradient(90deg, rgba(250,88,83,1) 0%, rgba(244,102,146,1) 50%, rgba(255,196,68,1) 100%);
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 100em;
+  font-weight: 700;
+  font-size: calc(10px + 1.5vmin);
+}
+
+.Body-scroll-down {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
 import Header from './Header.js';
 import Faq from './Faq.js';
 import ScrollDown from './ScrollDown.js';
+import Web3 from './Web3.js';
 import './Body.css';
 import comingSoon from './img/coming-soon-neon.jpg';
 
@@ -22,7 +23,8 @@ function Body() {
         </div>
         
         <div className="Coming-soon">
-          <img src={comingSoon} className="Coming-soon-img" alt="Coming Soon!" /> 
+          <img src={comingSoon} className="Coming-soon-img" alt="Coming Soon!" />
+          <Web3 />
         </div>
 
         <div className="Cta">

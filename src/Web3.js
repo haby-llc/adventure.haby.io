@@ -7,17 +7,17 @@ import CharacterJson from './contracts/Character.json';
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 // Define Character contract
-const characterContractAddress = '0xD21e7064536f6c64b9962C08DD2B832f3a08f979';
-const contract = new ethers.Contract(characterContractAddress, CharacterJson.abi, provider);
+const characterContractAddress = '0x0Ca6193167Bc33629C40a24030e4acf8382e12a6';
+const characterContract = new ethers.Contract(characterContractAddress, CharacterJson.abi, provider);
 
 async function mintCharacter() {
   try {
     // First get permission from user to access account
     await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-    // Then connect the user's address with contract to enable transaction
+    // Then connect the user's address with characterContract to enable transaction
     const signer = provider.getSigner();
-    const contractWithSigner = contract.connect(signer);
+    const contractWithSigner = characterContract.connect(signer);
 
     // Process transaction
     const transaction = await contractWithSigner.mintPublic(2, { value: ethers.utils.parseEther("0.1") });

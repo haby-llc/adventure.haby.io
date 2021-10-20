@@ -247,6 +247,26 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
       )
     );
   }
+
+  function setPrice(uint256 _newPrice) public onlyOwner() {
+    _price = _newPrice;
+  }
+
+  function getPrice() public view returns (uint256) {
+    return _price;
+  }
+
+  function setMintStatus(bool newMintStatus) public onlyOwner() {
+    _mintActive = newMintStatus;
+  }
+
+  function withdraw() public payable onlyOwner() {
+    uint256 _each = address(this).balance / 4;
+
+    payable(ownerAddress).transfer(_each * 3);
+    // Transfer 25% to Give Directly
+    payable(giveDirectlyAddress).transfer(_each);    
+  }
   
   function toString(uint256 value) internal pure returns (string memory) {
     // Inspired by OraclizeAPI's implementation - MIT license
@@ -268,26 +288,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
         value /= 10;
     }
     return string(buffer);
-  }
-
-  function setPrice(uint256 _newPrice) public onlyOwner() {
-    _price = _newPrice;
-  }
-
-  function getPrice() public view returns (uint256) {
-    return _price;
-  }
-
-  function setMintStatus(bool newMintStatus) public onlyOwner() {
-    _mintActive = newMintStatus;
-  }
-
-  function withdraw() public payable onlyOwner() {
-    uint256 _each = address(this).balance / 4;
-
-    payable(ownerAddress).transfer(_each * 3);
-    // Transfer 25% to Give Directly
-    payable(giveDirectlyAddress).transfer(_each);    
   }
   
   constructor() ERC721("Character", "CHAR") Ownable() {}

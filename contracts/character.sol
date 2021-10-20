@@ -9,33 +9,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   // Define minting rules
   bool public _mintActive = true;
-  uint256 private _price = 0.05 ether;
+  uint256 private _price = 0.04 ether;
   uint256 private _publicIssued = 0;
 
-  function mintPublic(uint256 numToMint) public payable nonReentrant {
-    require(_mintActive, "Public minting is paused.");
-    require(numToMint < 21, "Max mint of 20 Characters at once");
+  // Define owner address
+  address ownerAddress = 0xD21e7064536f6c64b9962C08DD2B832f3a08f979;
 
-    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");    
-    require(msg.value > _price * numToMint - 1, "Ether sent is low." );
-
-    for(uint8 i; i < numToMint; i++){
-      _publicIssued += 1;
-      _safeMint( msg.sender, _publicIssued );
-    }
-  }
-
-  function setPrice(uint256 _newPrice) public onlyOwner() {
-    _price = _newPrice;
-  }
-
-  function getPrice() public view returns (uint256) {
-    return _price;
-  }
-
-  function setMintStatus(bool newMintStatus) public onlyOwner() {
-    _mintActive = newMintStatus;
-  }
+  // Define address for GiveDirectly
+  // https://www.givedirectly.org/crypto/
+  address giveDirectlyAddress = 0x750EF1D7a0b4Ab1c97B7A623D7917CcEb5ea779C;
 
   // Define token components
   string[] private raceXLow = [
@@ -71,7 +53,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Lizard Folk"
   ];
   
-  string[] private mainClass = [
+  string[] private role = [
     "Artist",
     "Bard",
     "Dancer",
@@ -128,6 +110,19 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Earth",
     "Water"
   ];
+
+  function mintPublic(uint256 numToMint) public payable nonReentrant {
+    require(_mintActive, "Public minting is paused.");
+    require(numToMint < 21, "Max mint of 20 Characters at once");
+
+    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");    
+    require(msg.value > _price * numToMint - 1, "Ether sent is low." );
+
+    for(uint8 i; i < numToMint; i++){
+      _publicIssued += 1;
+      _safeMint( msg.sender, _publicIssued );
+    }
+  }
   
   function random(string memory input) internal pure returns (uint256) {
     return uint256(keccak256(abi.encodePacked(input)));
@@ -166,21 +161,21 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
   }
 
-  function getClass(uint256 tokenId) public view returns (string memory) {
+  function getRole(uint256 tokenId) public view returns (string memory) {
     require(tokenId < _publicIssued + 2, "You can't look ahead!");
-    uint256 rand = random(string(abi.encodePacked("CLASS", toString(tokenId))));
-    uint8 firstClassPosition = uint8(rand % mainClass.length);
+    uint256 rand = random(string(abi.encodePacked("ROLE", toString(tokenId))));
+    uint8 firstRolePosition = uint8(rand % role.length);
 
-    // 10% chance of having a second class
+    // 10% chance of having a second role
     if ((rand % 20) > 17) {
-      uint256 rand2 = random(string(abi.encodePacked("SECONDCLASS", toString(tokenId))));
-      uint8 secondClassPosition = uint8(rand2 % mainClass.length);
-      if (firstClassPosition != secondClassPosition) {
-        return string(abi.encodePacked(mainClass[firstClassPosition], " + ", mainClass[secondClassPosition]));
+      uint256 rand2 = random(string(abi.encodePacked("SECONDROLE", toString(tokenId))));
+      uint8 secondRolePosition = uint8(rand2 % role.length);
+      if (firstRolePosition != secondRolePosition) {
+        return string(abi.encodePacked(role[firstRolePosition], " + ", role[secondRolePosition]));
       }
     }
 
-    return mainClass[firstClassPosition];
+    return role[firstRolePosition];
   }
 
   function getElement(uint256 tokenId) public view returns (string memory) {
@@ -192,11 +187,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     if ((rand % 20) > 17) {
       uint256 rand2 = random(string(abi.encodePacked("SECONDELEMENT", toString(tokenId))));
       uint8 secondElementPosition = uint8(rand2 % elements.length);
-      if (firstElementPosition == secondElementPosition) {
-        return string(abi.encodePacked(elements[firstElementPosition], " x2"));
-      } else {
-        return string(abi.encodePacked(elements[firstElementPosition], " + ", elements[secondElementPosition]));
-      }
+      return string(abi.encodePacked(elements[firstElementPosition], " + ", elements[secondElementPosition]));
     } 
 
     return elements[firstElementPosition];
@@ -205,19 +196,30 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   function tokenURI(uint256 tokenId) override public view returns (string memory) {
     require(tokenId < _publicIssued + 2, "You can't look ahead!");
     string memory charRace = getRace(tokenId);
-    string memory charClass = getClass(tokenId);
-    string memory charElement = getElement(tokenId);
+    string memory charRole = getRole(tokenId);
+    string memory charElement = getElement(tokenId); 
 
     // Create SVG image for tokenURI
-    string[7] memory parts;
-    parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" /><text x="10" y="20" class="base">';
-    parts[1] = charRace;
-    parts[2] = '</text><text x="10" y="40" class="base">';
-    parts[3] = charClass;
-    parts[4] = '</text><text x="10" y="60" class="base">';
-    parts[5] = charElement;
-    parts[6] = '</text></svg>';
-    string memory svg = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]));
+    string[13] memory parts;
+    parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">';
+    parts[1] = '<style>.text { fill: white; font-family: serif; font-size: 14px; } .header-text { font-weight: bold; } .header-background { fill: #333; height: 30px; width: 100%; }</style>';
+    parts[2] = '<rect width="100%" height="100%" fill="black" />';
+    parts[3] = '<rect y="0" class="header-background" />';
+    parts[4] = '<text x="10" y="20" class="text header-text">Race</text><text x="10" y="50" class="text">';
+    parts[5] = charRace;
+    parts[6] = '</text><rect y="80" class="header-background" />';
+    parts[7] = '<text x="10" y="100" class="text header-text">Role</text><text x="10" y="130" class="text">';
+    parts[8] = charRole;
+    parts[9] = '</text><rect y="160" class="header-background" />';
+    parts[10] = '<text x="10" y="180" class="text header-text">Element</text><text x="10" y="210" class="text">';
+    parts[11] = charElement;
+    parts[12] = '</text></svg>';
+    string memory svg = string(
+      abi.encodePacked(
+        parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8], parts[9],
+        parts[10], parts[11], parts[12]
+      )
+    );
 
     // Create full tokenURI with name, description, attributes, and svg
     return string(
@@ -231,11 +233,11 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
                 toString(tokenId),
                 '", "attributes": [{ "trait_type": "Race", "value": "', 
                 charRace,
-                '" }, { "trait_type": "Class", "value": "',
-                charClass,
+                '" }, { "trait_type": "Role", "value": "',
+                charRole,
                 '" }, { "trait_type": "Element", "value": "',
                 charElement,
-                '" }], "description": "Character is a randomized RPG identity generated and stored on chain. Identity is composed of race, class, and element affinity. Maximum supply of Characters is dynamic, increasing at 1/10th the block rate of Ethereum. Feel free to use Character in any way you want.", "image": "data:image/svg+xml;base64,',
+                '" }], "description": "Character is a randomized RPG identity generated and stored on chain. Identity is composed of race, role, and element affinity. Maximum supply of Characters is dynamic, increasing at 1/10th the block rate of Ethereum. Feel free to use Character in any way you want.", "image": "data:image/svg+xml;base64,',
                 Base64.encode(bytes(svg)),
                 '"}'
               )
@@ -266,6 +268,26 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
         value /= 10;
     }
     return string(buffer);
+  }
+
+  function setPrice(uint256 _newPrice) public onlyOwner() {
+    _price = _newPrice;
+  }
+
+  function getPrice() public view returns (uint256) {
+    return _price;
+  }
+
+  function setMintStatus(bool newMintStatus) public onlyOwner() {
+    _mintActive = newMintStatus;
+  }
+
+  function withdraw() public payable onlyOwner() {
+    uint256 _each = address(this).balance / 4;
+
+    payable(ownerAddress).transfer(_each * 3);
+    // Transfer 25% to Give Directly
+    payable(giveDirectlyAddress).transfer(_each);    
   }
   
   constructor() ERC721("Character", "CHAR") Ownable() {}

@@ -113,7 +113,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
 
   function mintPublic(uint256 numToMint) public payable nonReentrant {
     require(_mintActive, "Public minting is paused.");
-    require(numToMint < 21, "Max mint of 20 Characters at once");
+    require(numToMint < 6, "Max mint of 5 Characters at once");
 
     require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");    
     require(msg.value > _price * numToMint - 1, "Ether sent is low." );
@@ -129,7 +129,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   }
   
   function getRace(uint256 tokenId) public view returns (string memory) {
-    require(tokenId < _publicIssued + 2, "You can't look ahead!");
     uint256 rand = random(string(abi.encodePacked("RACE", toString(tokenId))));
     uint256 tokenIdProbScore = (rand % 10000);
 
@@ -162,7 +161,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   }
 
   function getRole(uint256 tokenId) public view returns (string memory) {
-    require(tokenId < _publicIssued + 2, "You can't look ahead!");
     uint256 rand = random(string(abi.encodePacked("ROLE", toString(tokenId))));
     uint8 firstRolePosition = uint8(rand % role.length);
 
@@ -179,7 +177,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   }
 
   function getElement(uint256 tokenId) public view returns (string memory) {
-    require(tokenId < _publicIssued + 2, "You can't look ahead!");
     uint256 rand = random(string(abi.encodePacked("ELEMENT", toString(tokenId))));
     uint8 firstElementPosition = uint8(rand % elements.length);
 
@@ -194,7 +191,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   }
 
   function tokenURI(uint256 tokenId) override public view returns (string memory) {
-    require(tokenId < _publicIssued + 2, "You can't look ahead!");
     string memory charRace = getRace(tokenId);
     string memory charRole = getRole(tokenId);
     string memory charElement = getElement(tokenId); 

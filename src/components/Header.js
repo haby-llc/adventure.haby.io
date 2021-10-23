@@ -1,5 +1,5 @@
-import logo from './svg/logo.svg';
-import discordLogo from './svg/discord-logo-white.svg'
+import logo from '../svg/logo.svg';
+import discordLogo from '../svg/discord-logo-white.svg'
 import './Header.css';
 
 function Header() {

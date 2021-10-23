@@ -1,12 +1,9 @@
-import Body from './Body.js';
-import Footer from './Footer.js';
-import './App.css';
+import { Home } from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <Body />
-      <Footer />
+    <div>
+      <Home />
     </div>
   );
 }

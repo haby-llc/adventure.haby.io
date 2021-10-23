@@ -13,10 +13,10 @@ function Body() {
           <Header />
   
           <div className="Title">
-            <h1 className="Title-header">
+            <h1 className="Title-header serif-font">
               Choose Your Adventure!
             </h1>
-            <p className="Title-text">
+            <p className="Title-text monospace-font">
               Get a Character, with Stats, Skills, and Familiars to enter the Loot-verse.
             </p>
           </div>

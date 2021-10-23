@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import './Web3.css';
+import './Mint.css';
 import CharacterJson from '../contracts/Character.json';
 
 // A Web3Provider wraps a standard Web3 provider, which is
@@ -30,7 +30,7 @@ async function mintCharacter() {
   }
 }
 
-function Web3() {
+function Mint() {
   return (
     <button onClick={mintCharacter}>
       Buy
@@ -38,4 +38,4 @@ function Web3() {
   );
 }
 
-export default Web3;
+export default Mint;

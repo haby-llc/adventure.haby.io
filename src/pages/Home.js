@@ -1,11 +1,24 @@
 import './Home.css';
 
-import { Body, Footer } from '../components';
+import {
+  Header,
+  Title,
+  ComingSoon,
+  Mint,
+  Faq,
+  Community,
+  Footer,
+} from '../components';
 
 function Home() {
   return (
     <div className="Home">
-      <Body />
+      <Header />
+      <Title />
+      <ComingSoon />
+      <Mint />
+      <Faq />
+      <Community />
       <Footer />
     </div>
   );

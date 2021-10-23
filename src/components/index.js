@@ -1,15 +1,18 @@
-import Body from './Body.js';
+import ComingSoon from './ComingSoon.js';
+import Community from './Community.js';
 import Faq from './Faq.js';
 import Footer from './Footer.js';
 import Header from './Header.js';
-import ScrollDown from './ScrollDown.js';
-import Web3 from './Web3.js';
+import Mint from './Mint.js';
+import Title from './Title.js';
+
 
 export {
-  Body,
+  ComingSoon,
+  Community,
   Faq,
   Footer,
   Header,
-  ScrollDown,
-  Web3
+  Mint,
+  Title,
 };

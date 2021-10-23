@@ -1,0 +1,18 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-header {
+  margin: 0;
+  text-align: center;
+  font-size: 4vmax;
+  color: #FFF;
+}
+
+.title-text {
+  margin-bottom: 0;
+  text-align: center;
+  color: #BFBFBF;
+}

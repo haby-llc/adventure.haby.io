@@ -6,7 +6,6 @@ import {
   ComingSoon,
   Mint,
   Faq,
-  Community,
   Footer,
 } from '../components';
 
@@ -18,7 +17,6 @@ function Home() {
       <ComingSoon />
       <Mint />
       <Faq />
-      <Community />
       <Footer />
     </div>
   );

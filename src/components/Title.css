@@ -2,17 +2,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 8vmin 8vmax;
 }
 
-.title-header {
+.header-text {
   margin: 0;
   text-align: center;
-  font-size: 4vmax;
+  font-size: 3.75rem;
   color: #FFF;
+  font-weight: 400;
 }
 
-.title-text {
+.title-description {
+  width: 50%;
+}
+
+.highlight {
+  color: #bb7a8e;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.description-text {
   margin-bottom: 0;
   text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
   color: #BFBFBF;
 }
+

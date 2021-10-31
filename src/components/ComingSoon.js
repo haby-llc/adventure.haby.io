@@ -15,7 +15,7 @@ function ComingSoon() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Join our Discord to learn more
+          Join our Discord
         </a>
       </div>
     </div>

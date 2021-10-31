@@ -23,3 +23,12 @@ code {
 .no-margin {
   margin: 0;
 }
+
+.link {
+  color: #bb7a8e;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #4753d6;
+}

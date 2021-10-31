@@ -3,12 +3,29 @@ import './Title.css';
 function Title() {
   return (
     <div className="title">
-        <h1 className="title-header serif-font">
-          Choose Your Adventure!
+      <div className="title-header">
+        <h1 className="header-text serif-font">
+          Welcome Adventurer
         </h1>
-        <p className="title-text monospace-font">
-          Get a Character, with Stats, Skills, and Familiars to enter the Loot-verse.
+      </div>
+      <div className="title-description">
+        <p className="description-text monospace-font">
+          Mint your <span className="highlight">Character</span> and join a new
+          world of adventure that is inspired by and built on top of&nbsp; 
+          <a
+            href="https://www.lootproject.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link monospace-font"
+          >
+            Loot
+          </a>.
+          Your character is randomly generated and stored on chain. Each 
+          character has <span className="highlight">stats</span> and skills. 
+          Use them to clear dungeons and <span className="highlight">earn gold</span>.
+          Be the adventurer you were always born to be.
         </p>
+      </div>
     </div>
   );
 };

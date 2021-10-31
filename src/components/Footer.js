@@ -31,7 +31,7 @@ function Footer() {
             href="https://github.com/haby-llc/adventure.haby.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link monospace-font"
+            className="link footer-link monospace-font"
           >
             Smart Contract
           </a>
@@ -39,7 +39,7 @@ function Footer() {
             href="https://github.com/haby-llc/adventure.haby.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link monospace-font"
+            className="link footer-link monospace-font"
           >
             Source Code
           </a>
@@ -47,7 +47,7 @@ function Footer() {
             href="https://www.haby.io/projects"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link monospace-font"
+            className="link footer-link monospace-font"
           >
             Other Projects
           </a>

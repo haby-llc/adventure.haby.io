@@ -67,13 +67,7 @@
 }
 
 .footer-link {
-  color: #bb7a8e;
-  text-decoration: none;
   padding-bottom: 1vmin;
-}
-
-.footer-link:hover {
-  color: #4753d6;
 }
 
 .footer-buttons-row {

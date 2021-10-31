@@ -11,9 +11,10 @@ import {
 function Home() {
   return (
     <div className="Home">
-      <Title />
-      <ComingSoon />
-      <Mint />
+      <div className="above-the-fold">
+        <Title />
+        <ComingSoon />
+      </div>
       <Faq />
       <Footer />
     </div>

@@ -1,13 +1,8 @@
 import './ComingSoon.css';
-import comingSoon from '../img/coming-soon-neon.jpg';
 
 function ComingSoon() {
   return (
-    <div>
-      <div className="coming-soon">
-        <img src={comingSoon} className="coming-soon-img" alt="Coming Soon!" />
-      </div>
-
+    <div className="coming-soon">
       <div className="cta">
         <a
           className="cta-button"

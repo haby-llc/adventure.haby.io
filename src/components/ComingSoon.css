@@ -1,14 +1,9 @@
 .coming-soon {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.coming-soon-img {
-  max-width: 40vw;
-  filter: grayscale(100%);
-  opacity: 50%;
+  padding: 0vmin 8vmax 8vmin 8vmax;
 }
 
 .cta {

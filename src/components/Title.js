@@ -5,7 +5,7 @@ function Title() {
     <div className="title">
       <div className="title-header">
         <h1 className="header-text serif-font">
-          Welcome Adventurer
+          Welcome Adventurer!
         </h1>
       </div>
       <div className="title-description">

@@ -32,20 +32,20 @@
 }
 
 .haby-logo-text {
-  font-size: calc(10px + 2.5vmin);
+  font-size: 2rem;
   padding-left: 0.4em;
   color: #FFF;
 }
 
 .haby-description {
   color: #FFF;
-  font-size: calc(10px + 0.8vmin);
+  font-size: 1rem;
   padding-top: 1.5vmin;
 }
 
 .copyright {
   color: #aaa;
-  font-size: calc(10px + 0.5vmin);
+  font-size: 1rem;
   padding-top: 2vmax;
 }
 
@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: calc(10px + 0.8vmin);
+  font-size: 1rem;
   padding-right: 8vmax;
 }
 

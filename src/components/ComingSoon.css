@@ -6,6 +6,11 @@
   padding: 0vmin 8vmax 8vmin 8vmax;
 }
 
+.coming-soon-text {
+  color: #FFF;
+  font-size: 1.5rem;
+}
+
 .cta {
   display: flex;
   flex-direction: row;

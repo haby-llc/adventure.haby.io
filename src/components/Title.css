@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8vmin 8vmax;
+  padding: 8vmin 8vmax 4vmin 8vmax;
 }
 
 .header-text {

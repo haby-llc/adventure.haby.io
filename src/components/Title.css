@@ -5,7 +5,7 @@
   padding: 8vmin 8vmax 4vmin 8vmax;
 }
 
-.header-text {
+.title-header-text {
   margin: 0;
   text-align: center;
   font-size: 3.75rem;
@@ -25,7 +25,7 @@
   font-weight: 700;
 }
 
-.description-text {
+.title-description-text {
   margin-bottom: 0;
   text-align: center;
   font-size: 1.5rem;

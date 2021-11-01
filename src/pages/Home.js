@@ -3,8 +3,6 @@ import './Home.css';
 import {
   Title,
   ComingSoon,
-  Mint,
-  Faq,
   Footer,
 } from '../components';
 
@@ -15,7 +13,6 @@ function Home() {
         <Title />
         <ComingSoon />
       </div>
-      <Faq />
       <Footer />
     </div>
   );

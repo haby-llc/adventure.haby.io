@@ -4,12 +4,12 @@ function Title() {
   return (
     <div className="title">
       <div className="title-header">
-        <h1 className="header-text serif-font">
+        <h1 className="title-header-text serif-font">
           Welcome Adventurer!
         </h1>
       </div>
       <div className="title-description">
-        <p className="description-text monospace-font">
+        <p className="title-description-text monospace-font">
           Mint your <span className="highlight">Character</span> and join a new
           world of adventure that is inspired by and built on top of&nbsp; 
           <a

@@ -37,14 +37,11 @@ function Footer() {
         >
           Source Code
         </a>
-        <a
-          href="https://etherscan.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link footer-link monospace-font"
+        <div
+          className="link inactive footer-link monospace-font"
         >
           Smart Contract (Coming Soon)
-        </a>
+        </div>
         <a
           href="https://www.haby.io/projects"
           target="_blank"
@@ -58,7 +55,7 @@ function Footer() {
       <div className="footer-buttons-row">
         <div className="footer-icon-button">
           <a
-            href="https://discord.gg/nWZNmJmQ"
+            href="https://discord.gg/FwcZjwdCQs"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-icon-button-link"
@@ -68,7 +65,7 @@ function Footer() {
         </div>
         <div className="footer-icon-button">
           <a
-            href="https://discord.gg/nWZNmJmQ"
+            href="https://twitter.com/HabyLabs"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-icon-button-link"
@@ -78,7 +75,7 @@ function Footer() {
         </div>
         <div className="footer-icon-button">
           <a
-            href="https://discord.gg/nWZNmJmQ"
+            href="https://opensea.io/"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-icon-button-link"

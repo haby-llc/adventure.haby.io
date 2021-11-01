@@ -12,7 +12,7 @@ function ComingSoon() {
       <div className="cta">
         <a
           className="cta-button"
-          href="https://discord.gg/nWZNmJmQ"
+          href="https://discord.gg/FwcZjwdCQs"
           target="_blank"
           rel="noopener noreferrer"
         >

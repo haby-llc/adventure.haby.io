@@ -29,6 +29,10 @@ code {
   text-decoration: none;
 }
 
+.link.inactive:hover{
+  color: #bb7a8e;
+}
+
 .link:hover {
   color: #4753d6;
 }

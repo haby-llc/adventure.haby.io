@@ -28,12 +28,20 @@ function Footer() {
       <div className="footer-right-section">
         <div className="footer-right-section-links">
           <a
-            href="https://github.com/haby-llc/adventure.haby.io"
+            href="https://habylabs.notion.site/Mission-Vision-Values-1b099b95a05d4139b070f4e8d14a4dda"
             target="_blank"
             rel="noopener noreferrer"
             className="link footer-link monospace-font"
           >
-            Smart Contract
+            Values
+          </a>
+          <a
+            href="https://habylabs.notion.site/00152d0c553644629158b4701ce451d4?v=fc026e7cc67a4672a2b6d980cf8cbed0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link footer-link monospace-font"
+          >
+            Roadmap
           </a>
           <a
             href="https://github.com/haby-llc/adventure.haby.io"
@@ -42,6 +50,14 @@ function Footer() {
             className="link footer-link monospace-font"
           >
             Source Code
+          </a>
+          <a
+            href="https://etherscan.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link footer-link monospace-font"
+          >
+            Smart Contract (Coming Soon)
           </a>
           <a
             href="https://www.haby.io/projects"

@@ -32,13 +32,3 @@ code {
 .link:hover {
   color: #4753d6;
 }
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-}

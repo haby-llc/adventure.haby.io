@@ -1,8 +1,11 @@
 import './ComingSoon.css';
+import { useMediaQuery } from 'react-responsive';
 
 function ComingSoon() {
+  const isMobile = useMediaQuery({ maxWidth: 480 });
+
   return (
-    <div className="coming-soon">
+    <div className={`coming-soon ${isMobile ? "side-padding-mobile" : "side-padding"}`}>
       <p className="coming-soon-text monospace-font">
         Launching November 11, 2021
       </p>

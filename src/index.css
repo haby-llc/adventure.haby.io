@@ -32,3 +32,23 @@ code {
 .link:hover {
   color: #4753d6;
 }
+
+.side-padding {
+  padding-left: 8vmax;
+  padding-right: 8vmax;
+}
+
+.side-padding-mobile {
+  padding-left: 4vmax;
+  padding-right: 4vmax;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

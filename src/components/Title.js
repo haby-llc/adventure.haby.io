@@ -1,14 +1,26 @@
 import './Title.css';
+import { useMediaQuery } from 'react-responsive';
 
 function Title() {
+  const isMobile = useMediaQuery({ maxWidth: 480 });
+  const need75WidthDescription = useMediaQuery({ minWidth: 800 });
+  const need50WidthDescription = useMediaQuery({ minWidth: 1200 });
+
+  let titleDescription = "title-description-100";
+  if (need50WidthDescription) {
+    titleDescription = "title-description-50";
+  } else if (need75WidthDescription) {
+    titleDescription = "title-description-75";
+  } 
+
   return (
-    <div className="title">
+    <div className={`title ${isMobile ? "side-padding-mobile" : "side-padding"}`}>
       <div className="title-header">
-        <h1 className="title-header-text serif-font">
+        <h1 className="title-header-text no-margin serif-font">
           Welcome Adventurer!
         </h1>
       </div>
-      <div className="title-description">
+      <div className={titleDescription}>
         <p className="title-description-text monospace-font">
           Mint your&nbsp;
           <a

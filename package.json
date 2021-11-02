@@ -17,10 +17,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start-app": "react-scripts start",
-    "build-app": "react-scripts build",
-    "test-app": "react-scripts test",
-    "eject-app": "react-scripts eject",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "compile-contracts": "npx hardhat compile",
     "serve-contracts": "npx hardhat node",
     "deploy-contracts-local": "npx hardhat run scripts/deploy.js --network localhost",

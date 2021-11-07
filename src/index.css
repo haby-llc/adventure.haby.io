@@ -56,3 +56,7 @@ code {
   display: flex;
   flex-direction: column;
 }
+
+.white-text {
+  color: #FFF;
+}

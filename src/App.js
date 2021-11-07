@@ -1,10 +1,17 @@
+import { Web3ReactProvider } from '@web3-react/core'
+import { ethers } from "ethers";
+
 import { Home } from './pages';
+
+function getLibrary(provider, connector) {
+  return new ethers.providers.Web3Provider(provider);
+}
 
 function App() {
   return (
-    <div>
+    <Web3ReactProvider getLibrary={getLibrary}>
       <Home />
-    </div>
+    </Web3ReactProvider>
   );
 }
 

@@ -1,6 +1,10 @@
-import { ethers } from "ethers";
 import './Mint.css';
+import { useWeb3React } from "@web3-react/core";
+import { Button } from '../components';
+
+/*
 import CharacterJson from '../contracts/Character.json';
+
 
 // A Web3Provider wraps a standard Web3 provider, which is
 // what Metamask injects as window.ethereum into each page
@@ -37,5 +41,32 @@ function Mint() {
     </button>
   );
 }
+
+*/
+
+
+
+function Mint() {
+  const { account, deactivate } = useWeb3React();
+
+  async function disconnect() {
+    try {
+      deactivate()
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
+
+  return (
+    <div>
+      <p className="monospace-font no-margin white-text">
+        Connected with <b>{account}</b>
+      </p>
+      <Button onClick={disconnect} className="">
+        Disconnect Wallet
+      </Button>
+    </div>
+  );
+};
 
 export default Mint;

@@ -41,7 +41,7 @@ function Title() {
             Loot
           </a>.
           Your character is randomly generated and stored on chain. Each 
-          character has&nbsp;
+          character will have&nbsp;
           <a
             href="https://habylabs.notion.site/Stats-8b5e87f09c974062b7ddc6930231ca36"
             target="_blank"

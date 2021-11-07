@@ -9,9 +9,9 @@ function ComingSoon() {
       <p className="coming-soon-text monospace-font">
         Launching November 11, 2021
       </p>
-      <div className="cta">
+      <div className="coming-soon-cta">
         <a
-          className="cta-button"
+          className="coming-soon-cta-button"
           href="https://discord.gg/FwcZjwdCQs"
           target="_blank"
           rel="noopener noreferrer"

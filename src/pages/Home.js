@@ -14,7 +14,9 @@ function Home() {
     <div className="Home">
       <div className="above-the-fold">
         <Title />
-        {active ? <Mint /> : <Connect />}
+        <div className="row justify-center">
+          {active ? <Mint /> : <Connect />}
+        </div>
       </div>
       <Footer />
     </div>

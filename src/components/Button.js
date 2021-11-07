@@ -1,8 +1,14 @@
-import './Button.js';
+import './Button.css';
 
-function Button({ children, onClick }) {
+function Button({ children, onClick, small = false, outline = false }) {
+  const buttonSize = small ? "small" : "large";
+  const buttonColor = outline ? "outline" : "primary"; 
+
   return (
-    <button className="cta-button monospace-font" style={{ border: "none", cursor: "pointer" }} onClick={onClick}>
+    <button
+      className={`cta-button monospace-font ${buttonSize} ${buttonColor}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -1,53 +1,35 @@
 import './Mint.css';
 import { useWeb3React } from "@web3-react/core";
+import { ethers } from "ethers";
 import { Button } from '../components';
-
-/*
 import CharacterJson from '../contracts/Character.json';
 
 
-// A Web3Provider wraps a standard Web3 provider, which is
-// what Metamask injects as window.ethereum into each page
-const provider = new ethers.providers.Web3Provider(window.ethereum)
+function Mint() {
+  const { account, deactivate, library } = useWeb3React();
 
-// Define Character contract
-const characterContractAddress = '0x0Ca6193167Bc33629C40a24030e4acf8382e12a6';
-const characterContract = new ethers.Contract(characterContractAddress, CharacterJson.abi, provider);
+  // Define Character contract
+  const characterContractAddress = '0x0Ca6193167Bc33629C40a24030e4acf8382e12a6';
+  const characterContract = new ethers.Contract(characterContractAddress, CharacterJson.abi, library);
+  const signerContract = characterContract.connect(library.getSigner());
 
-async function mintCharacter() {
-  try {
-    // First get permission from user to access account
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
+  async function mint() {
+    try {
+      const mintPrice = await signerContract.getPrice();
+      const mintNumber = 1;
+      
+      const transaction = await signerContract.mintPublic(
+        mintNumber,
+        { value: ethers.utils.parseUnits((mintNumber * mintPrice).toString(), "wei") }
+      );
+      await transaction.wait();
+    } catch (error) {
+      console.log("error");
+      console.error(error);
 
-    // Then connect the user's address with characterContract to enable transaction
-    const signer = provider.getSigner();
-    const contractWithSigner = characterContract.connect(signer);
-
-    // Process transaction
-    const transaction = await contractWithSigner.mintPublic(2, { value: ethers.utils.parseEther("0.1") });
-    await transaction.wait();
-  } catch (error) {
-    console.log("error");
-    console.error(error);
-
-    alert("There was an error! Please make sure you are logged into Metamask and have sufficient funds");
+      alert("Please make sure you have sufficient funds in your wallet.");
+    }
   }
-}
-
-function Mint() {
-  return (
-    <button onClick={mintCharacter}>
-      Buy
-    </button>
-  );
-}
-
-*/
-
-
-
-function Mint() {
-  const { account, deactivate } = useWeb3React();
 
   async function disconnect() {
     try {
@@ -57,13 +39,17 @@ function Mint() {
     }
   }
 
+  function formatAccount() {
+    return `${account.slice(0,3)}...${account.slice(account.length - 3)}`
+  }
+
   return (
-    <div>
-      <p className="monospace-font no-margin white-text">
-        Connected with <b>{account}</b>
-      </p>
-      <Button onClick={disconnect} className="">
-        Disconnect Wallet
+    <div className="column align-center justify-center">
+      <Button onClick={mint}>
+        Mint
+      </Button>
+      <Button onClick={disconnect} small outline>
+        {formatAccount()} [ disconnect ]
       </Button>
     </div>
   );

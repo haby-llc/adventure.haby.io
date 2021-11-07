@@ -13,14 +13,14 @@
   text-align: center;
 }
 
-.cta {
+.coming-soon-cta {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.cta-button {
+.coming-soon-cta-button {
   display: flex;
   flex-direction: row;
   align-items: center;

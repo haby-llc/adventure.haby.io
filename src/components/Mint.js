@@ -1,4 +1,5 @@
 import './Mint.css';
+import { useState } from 'react';
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { Button } from '../components';
@@ -6,6 +7,8 @@ import CharacterJson from '../contracts/Character.json';
 
 
 function Mint() {
+  const [ mintStatus, setMintStatus ] = useState("");
+  const [ mintError, setMintError ] = useState("");
   const { account, deactivate, library } = useWeb3React();
 
   // Define Character contract
@@ -15,6 +18,9 @@ function Mint() {
 
   async function mint() {
     try {
+      setMintStatus("");
+      setMintError("");
+
       const mintPrice = await signerContract.getPrice();
       const mintNumber = 1;
       
@@ -22,12 +28,13 @@ function Mint() {
         mintNumber,
         { value: ethers.utils.parseUnits((mintNumber * mintPrice).toString(), "wei") }
       );
+      setMintStatus("Minting...");
       await transaction.wait();
-    } catch (error) {
-      console.log("error");
-      console.error(error);
 
-      alert("Please make sure you have sufficient funds in your wallet.");
+      setMintStatus("You've successfully minted a Character!");
+    } catch (error) {
+      console.error(error);
+      setMintError(error.message);
     }
   }
 
@@ -45,6 +52,14 @@ function Mint() {
 
   return (
     <div className="column align-center justify-center">
+      <div className="monospace-font white-text mint-message-padding">
+        <p className="mint-success no-margin">
+          { mintStatus }
+        </p>
+        <p className="mint-error no-margin">
+          { mintError }
+        </p>
+      </div>
       <Button onClick={mint}>
         Mint
       </Button>

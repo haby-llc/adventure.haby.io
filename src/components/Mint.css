@@ -1,0 +1,13 @@
+.mint-message-padding {
+  padding-bottom: 1vmax;
+}
+
+.mint-success {
+  font-size: 1em;
+  color: #FFF;
+}
+
+.mint-error {
+  font-size: 1em;
+  color: #FA5853;
+}

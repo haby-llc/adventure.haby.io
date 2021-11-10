@@ -50,7 +50,15 @@ function Title() {
           >
             Stats
           </a> and skills. 
-          Use them to clear dungeons and earn gold.
+          Use them to clear&nbsp;
+          <a
+            href="https://habylabs.notion.site/Dungeon-5e1f20c2f53940eabddbee2af7ac9a31"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link monospace-font"
+          >
+            Dungeons
+          </a> and earn gold.
           Be the adventurer you were always born to be.
         </p>
       </div>

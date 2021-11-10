@@ -115,8 +115,8 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     require(_mintActive, "Public minting is paused.");
     require(numToMint < 6, "Max mint of 5 Characters at once");
 
-    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");    
-    require(msg.value > _price * numToMint - 1, "Ether sent is low." );
+    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");
+    require(msg.value >= _price * numToMint, "Ether sent is low." );
 
     for(uint8 i; i < numToMint; i++){
       _publicIssued += 1;

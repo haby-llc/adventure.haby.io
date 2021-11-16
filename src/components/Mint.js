@@ -12,7 +12,7 @@ function Mint() {
   const { account, deactivate, library } = useWeb3React();
 
   // Define Character contract
-  const characterContractAddress = '0x0Ca6193167Bc33629C40a24030e4acf8382e12a6';
+  const characterContractAddress = '0xE600AFed52558f0c1F8Feeeb128c9b932B7ae4e3';
   const characterContract = new ethers.Contract(characterContractAddress, CharacterJson.abi, library);
   const signerContract = characterContract.connect(library.getSigner());
 

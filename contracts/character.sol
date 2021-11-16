@@ -111,6 +111,30 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Water"
   ];
 
+  string[] private elementsCommon = [
+    "Fire",
+    "Wind",
+    "Earth",
+    "Water"
+  ];
+
+  string[] private elementsUncommon = [
+    "Lightning",
+    "Metal",
+    "Poison"
+  ];
+
+  string[] private elementsRare = [
+    "Light",
+    "Dark"
+  ];
+
+  string[] private elementsLegendary = [
+    "Chaos",
+    "Gravity",
+    "Time"
+  ];
+
   function mintPublic() public payable nonReentrant {
     require(_mintActive, "Public minting is paused.");
     require(_publicIssued < (block.number / 10) + 1, "No Characters to mint now.");
@@ -172,18 +196,30 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     return role[firstRolePosition];
   }
 
+  function getElementName(uint8 probScore, uint256 rand) private view returns (string memory) {
+    if (probScore < 65) {
+      return elementsCommon[rand % elementsCommon.length];
+    } else if (probScore < 90) {
+      return elementsUncommon[rand % elementsUncommon.length];
+    } else if (probScore < 99) {
+      return elementsRare[rand % elementsRare.length];
+    } else {
+      return elementsLegendary[rand % elementsLegendary.length];
+    }
+  }
+
   function getElement(uint256 tokenId) public view returns (string memory) {
     uint256 rand = random(string(abi.encodePacked("ELEMENT", toString(tokenId))));
-    uint8 firstElementPosition = uint8(rand % elements.length);
+    uint8 firstProbScore = uint8(rand % 100);
 
     // 10% probability of having two element affinities
     if ((rand % 20) > 17) {
       uint256 rand2 = random(string(abi.encodePacked("SECONDELEMENT", toString(tokenId))));
-      uint8 secondElementPosition = uint8(rand2 % elements.length);
-      return string(abi.encodePacked(elements[firstElementPosition], " + ", elements[secondElementPosition]));
+      uint8 secondProbScore = uint8(rand2 % 100);
+      return string(abi.encodePacked(getElementName(firstProbScore, rand), " + ", getElementName(secondProbScore, rand2)));
     } 
 
-    return elements[firstElementPosition];
+    return getElementName(firstProbScore, rand);
   }
 
   function tokenURI(uint256 tokenId) override public view returns (string memory) {

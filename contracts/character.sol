@@ -116,10 +116,8 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     require(_publicIssued < (block.number / 10) + 1, "No Characters to mint now.");
     require(msg.value == _price, "Incorrect amount of ether sent" );
 
-    for(uint8 i; i < numToMint; i++){
-      _publicIssued += 1;
-      _safeMint( msg.sender, _publicIssued );
-    }
+    _publicIssued += 1;
+    _safeMint( msg.sender, _publicIssued );
   }
   
   function random(string memory input) internal pure returns (uint256) {

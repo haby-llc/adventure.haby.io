@@ -20,14 +20,14 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   address giveDirectlyAddress = 0x750EF1D7a0b4Ab1c97B7A623D7917CcEb5ea779C;
 
   // Define token components
-  string[] private raceXLow = [
+  string[] private raceLegendary = [
     "Fairy",
     "Djinn",
     "Demon",
     "Angel"
   ];
 
-  string[] private raceLow = [
+  string[] private raceRare = [
     "Dark Elf",
     "Centaur",
     "Giant",
@@ -36,7 +36,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Alien"
   ];
 
-  string[] private raceMed = [
+  string[] private raceUncommon = [
     "Elf",
     "Dwarf",
     "Gnome",
@@ -44,7 +44,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Robot"
   ];
 
-  string[] private raceHigh = [
+  string[] private raceCommon = [
     "Human",
     "Orc",
     "Undead",
@@ -128,31 +128,31 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     uint256 rand = random(string(abi.encodePacked("RACE", toString(tokenId))));
     uint256 tokenIdProbScore = (rand % 10000);
 
-    // The probability of minting in xlow and low races decreases over time until
+    // The probability of minting legendary and rare races decreases over time until
     // tokenId 50,000 has been minted. At that point, the probability stabilizes.
-    // The probability of med race stays constant, and as a result, the probability
-    // of a high race increases over time and also stabilizes after 50,000 
+    // The probability of uncommon races stay constant, and as a result, the probability
+    // of a common race increases over time and also stabilizes after 50,000.
     uint256 stabilizingPop = 50000;
-    uint256 xlowProb;
-    uint256 lowProb;
-    uint256 medProb = 3500;
+    uint256 legendaryProb;
+    uint256 rareProb;
+    uint256 uncommonProb = 3500;
 
     if (tokenId < stabilizingPop) {
-      xlowProb = (stabilizingPop - tokenId + 999) / 100;
-      lowProb = ((4 * (stabilizingPop - tokenId)) + 49000) / 100;
+      legendaryProb = (stabilizingPop - tokenId + 999) / 100;
+      rareProb = ((4 * (stabilizingPop - tokenId)) + 49000) / 100;
     } else {
-      xlowProb = 10;
-      lowProb = 490;
+      legendaryProb = 10;
+      rareProb = 490;
     }
 
-    if (tokenIdProbScore > xlowProb + lowProb + medProb) {
-      return raceHigh[rand % raceHigh.length];
-    } else if (tokenIdProbScore > xlowProb + lowProb) {
-      return raceMed[rand % raceMed.length];
-    } else if (tokenIdProbScore > xlowProb) {
-      return raceLow[rand % raceLow.length];
+    if (tokenIdProbScore > legendaryProb + rareProb + uncommonProb) {
+      return raceCommon[rand % raceCommon.length];
+    } else if (tokenIdProbScore > legendaryProb + rareProb) {
+      return raceUncommon[rand % raceUncommon.length];
+    } else if (tokenIdProbScore > legendaryProb) {
+      return raceRare[rand % raceRare.length];
     } else {
-      return raceXLow[rand % raceXLow.length];
+      return raceLegendary[rand % raceLegendary.length];
     }
   }
 

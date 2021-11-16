@@ -102,14 +102,6 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Demon Slayer",
     "Berserker"
   ];
-  
-  string[] private elements = [
-    "Fire",
-    "Wind",
-    "Lightning",
-    "Earth",
-    "Water"
-  ];
 
   string[] private elementsCommon = [
     "Fire",
@@ -198,7 +190,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     return role[firstRolePosition];
   }
 
-  function getElementName(uint8 probScore, uint256 rand) private view returns (string memory) {
+  function getElementName(uint8 probScore, uint256 rand) internal view returns (string memory) {
     if (probScore < 65) {
       return elementsCommon[rand % elementsCommon.length];
     } else if (probScore < 90) {
@@ -230,25 +222,19 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     string memory charElement = getElement(tokenId); 
 
     // Create SVG image for tokenURI
-    string[13] memory parts;
+    string[10] memory parts;
     parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">';
     parts[1] = '<style>.text { fill: white; font-family: serif; font-size: 14px; } .header-text { font-weight: bold; } .header-background { fill: #333; height: 30px; width: 100%; }</style>';
     parts[2] = '<rect width="100%" height="100%" fill="black" />';
-    parts[3] = '<rect y="0" class="header-background" />';
-    parts[4] = '<text x="10" y="20" class="text header-text">Race</text><text x="10" y="50" class="text">';
-    parts[5] = charRace;
-    parts[6] = '</text><rect y="80" class="header-background" />';
-    parts[7] = '<text x="10" y="100" class="text header-text">Role</text><text x="10" y="130" class="text">';
-    parts[8] = charRole;
-    parts[9] = '</text><rect y="160" class="header-background" />';
-    parts[10] = '<text x="10" y="180" class="text header-text">Element</text><text x="10" y="210" class="text">';
-    parts[11] = charElement;
-    parts[12] = '</text></svg>';
+    parts[3] = '<rect y="0" class="header-background" /><text x="10" y="20" class="text header-text">Race</text><text x="10" y="50" class="text">';
+    parts[4] = charRace;
+    parts[5] = '</text><rect y="80" class="header-background" /><text x="10" y="100" class="text header-text">Role</text><text x="10" y="130" class="text">';
+    parts[6] = charRole;
+    parts[7] = '</text><rect y="160" class="header-background" /><text x="10" y="180" class="text header-text">Element</text><text x="10" y="210" class="text">';
+    parts[8] = charElement;
+    parts[9] = '</text></svg>';
     string memory svg = string(
-      abi.encodePacked(
-        parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8], parts[9],
-        parts[10], parts[11], parts[12]
-      )
+      abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8], parts[9])
     );
 
     // Create full tokenURI with name, description, attributes, and svg

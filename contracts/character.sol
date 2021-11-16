@@ -13,7 +13,7 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
   uint256 private _publicIssued = 0;
 
   // Define owner address
-  address ownerAddress = 0xD21e7064536f6c64b9962C08DD2B832f3a08f979;
+  address ownerAddress = 0xa27999aEE6d546004fA37CfDf372a922aB1C7Eff;
 
   // Define address for GiveDirectly
   // https://www.givedirectly.org/crypto/

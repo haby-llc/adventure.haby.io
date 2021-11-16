@@ -135,13 +135,15 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Time"
   ];
 
-  function mintPublic() public payable nonReentrant {
+  function mintPublic(uint256 numToMint) public payable nonReentrant {
     require(_mintActive, "Public minting is paused.");
-    require(_publicIssued < (block.number / 10) + 1, "No Characters to mint now.");
-    require(msg.value == _price, "Incorrect amount of ether sent" );
+    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");
+    require(msg.value >= _price * numToMint, "Not enough ether sent" );
 
-    _publicIssued += 1;
-    _safeMint( msg.sender, _publicIssued );
+    for (uint256 index = 0; index < numToMint; index++) {
+      _publicIssued += 1;
+      _safeMint( msg.sender, _publicIssued );
+    }
   }
   
   function random(string memory input) internal pure returns (uint256) {

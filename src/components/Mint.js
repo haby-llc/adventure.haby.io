@@ -41,8 +41,8 @@ function Mint() {
   async function disconnect() {
     try {
       deactivate()
-    } catch (ex) {
-      console.log(ex)
+    } catch (error) {
+      console.log(error)
     }
   }
 

@@ -111,12 +111,10 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     "Water"
   ];
 
-  function mintPublic(uint256 numToMint) public payable nonReentrant {
+  function mintPublic() public payable nonReentrant {
     require(_mintActive, "Public minting is paused.");
-    require(numToMint < 6, "Max mint of 5 Characters at once");
-
-    require(_publicIssued + numToMint < (block.number / 10) + 1, "No Characters to mint now.");
-    require(msg.value >= _price * numToMint, "Ether sent is low." );
+    require(_publicIssued < (block.number / 10) + 1, "No Characters to mint now.");
+    require(msg.value == _price, "Incorrect amount of ether sent" );
 
     for(uint8 i; i < numToMint; i++){
       _publicIssued += 1;

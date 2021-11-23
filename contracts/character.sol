@@ -276,6 +276,10 @@ contract Character is ERC721Enumerable, ReentrancyGuard, Ownable {
     _mintActive = newMintStatus;
   }
 
+  function getMintedCount() public view returns (uint256) {
+    return _publicIssued;
+  }
+
   function withdraw() public payable onlyOwner() {
     uint256 _each = address(this).balance / 4;
 

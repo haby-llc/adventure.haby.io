@@ -7,7 +7,7 @@ function ComingSoon() {
   return (
     <div className={`coming-soon ${isMobile ? "side-padding-mobile" : "side-padding"}`}>
       <p className="coming-soon-text monospace-font">
-        Launching November 23, 2021. 6pm ET.
+        Launching December 1, 2021. 1pm PT.
       </p>
       <div className="coming-soon-cta">
         <a

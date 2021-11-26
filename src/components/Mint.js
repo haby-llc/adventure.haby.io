@@ -7,9 +7,10 @@ import CharacterJson from '../contracts/Character.json';
 
 
 function Mint() {
-  const [ mintStatus, setMintStatus ] = useState("");
-  const [ mintError, setMintError ] = useState("");
-  const { account, address, deactivate, library } = useWeb3React();
+  const [ numToMint, setNumToMint ] = useState(1);
+  const [ contractStatus, setContractStatus ] = useState("");
+  const [ contractError, setContractError ] = useState("");
+  const { account, deactivate, library } = useWeb3React();
 
   // Define Character contract
   const characterContractAddress = '0xE600AFed52558f0c1F8Feeeb128c9b932B7ae4e3';
@@ -19,52 +20,47 @@ function Mint() {
 
   async function mint() {
     try {
-      setMintStatus("");
-      setMintError("");
+      setContractStatus("Minting...");
+      setContractError("");
 
       const mintPrice = await signerContract.getPrice();
-      const mintNumber = 1;
       
       const transaction = await signerContract.mintPublic(
-        mintNumber,
-        { value: ethers.utils.parseUnits((mintNumber * mintPrice).toString(), "wei") }
+        numToMint,
+        { value: ethers.utils.parseUnits((numToMint * mintPrice).toString(), "wei") }
       );
-      setMintStatus("Minting...");
       await transaction.wait();
 
-      setMintStatus("You've successfully minted a Character!");
+      setContractStatus("You've successfully minted a Character! Check it out on ");
     } catch (error) {
       console.error(error);
-      setMintError(error.message);
+      setContractError(error.message);
+      setContractStatus("");
     }
   }
 
   async function disconnect() {
     try {
-      deactivate()
+      setContractError("");
+      deactivate();
     } catch (error) {
-      console.error(error)
+      console.error(error);
+      setContractError(error.message);
     }
   }
   
   async function withdraw() {
     try {
-      const withdraw = signerContract.withdraw();
-      await withdraw.wait();
+      setContractStatus("Withdrawing...");
+      setContractError("");
 
-      console.log("Withdraw successful");
+      const withdraw = await signerContract.withdraw();
+      console.log(withdraw);
+      setContractStatus("Withdraw complete!");
     } catch (error) {
       console.error(error);
-    }
-  }
-
-  async function getMintedCount() {
-    try {
-      const promise = await signerContract.getMintedCount();
-      const mintedCount = await promise.wait();
-      return mintedCount;
-    } catch (error) {
-      console.error(error);
+      setContractError(error.message);
+      setContractStatus("");
     }
   }
 
@@ -74,27 +70,39 @@ function Mint() {
 
   return (
     <div className="column align-center justify-center">
-      <div className="monospace-font white-text mint-message-padding">
-        <p>
-          {`${getMintedCount()} Minted`}
-        </p>
-        <p className="mint-success no-margin">
-          { mintStatus }
-        </p>
-        <p className="mint-error no-margin">
-          { mintError }
-        </p>
-      </div>
-      <Button onClick={mint}>
+      <p className="mint-price-text monospace-font">
+        0.04 ETH to Mint
+      </p>
+      <Button onClick={mint} disabled={(contractStatus === "Minting...")}>
         Mint
       </Button>
+      <div className="monospace-font white-text mint-message-padding">
+        <p className="mint-success no-margin">
+          { contractStatus }
+          { 
+            contractStatus === "You've successfully minted a Character! Check it out on " ? (
+              <a
+                href="https://opensea.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link monospace-font"
+              >
+                OpenSea.
+              </a>
+            ) : null
+          }
+        </p>
+        <p className="mint-error no-margin">
+          { contractError }
+        </p>
+      </div>
       <Button onClick={disconnect} small outline>
         {formatAccount()} [ disconnect ]
       </Button>
       { 
-        address === ownerAddress ? (
-          <Button onClick={withdraw} small outline>
-            [ withdraw ]
+        account === ownerAddress ? (
+          <Button onClick={withdraw} small outline disabled={(contractStatus === "Withdrawing...")}>
+            Withdraw Funds
           </Button>
         ) : null
       }

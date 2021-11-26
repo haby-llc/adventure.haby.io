@@ -4,8 +4,15 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  cursor: pointer;
   margin-bottom: 1vmax;
+}
+
+.enabled-button-pointer {
+  cursor: pointer;
+}
+
+.disabled-button-pointer {
+  cursor: auto;
 }
 
 .large {

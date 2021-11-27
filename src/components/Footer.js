@@ -14,6 +14,14 @@ function Footer() {
     <div className="footer-right-section">
       <div className="footer-right-section-links">
         <a
+          href="https://habylabs.notion.site/FAQs-da5e0e5851d74d029b70007aa1e2ec61"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link footer-link monospace-font"
+        >
+          FAQ
+        </a>
+        <a
           href="https://habylabs.notion.site/Mission-Vision-Values-1b099b95a05d4139b070f4e8d14a4dda"
           target="_blank"
           rel="noopener noreferrer"
@@ -40,22 +48,14 @@ function Footer() {
         <div
           className="link inactive footer-link monospace-font"
         >
-          Smart Contract (Coming Soon)
+          Contract (Coming Soon)
         </div>
-        <a
-          href="https://www.haby.io/projects"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link footer-link monospace-font"
-        >
-          Other Projects
-        </a>
       </div>
 
       <div className="footer-buttons-row">
         <div className="footer-icon-button">
           <a
-            href="https://discord.gg/FwcZjwdCQs"
+            href="https://discord.gg/TXgaBwYZep"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-icon-button-link"

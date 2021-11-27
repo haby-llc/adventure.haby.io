@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  margin-bottom: 1vmax;
 }
 
 .enabled-button-pointer {
@@ -40,4 +39,10 @@
   border-color: #BFBFBF;
   border-style: solid;
   color: #BFBFBF;
+}
+
+.disabled {
+  background-color: #999;
+  color: #FFF;
+  border: none;
 }

@@ -2,7 +2,7 @@ import './Button.css';
 
 function Button({ children, onClick, small = false, outline = false, disabled = false }) {
   const buttonSize = small ? "small" : "large";
-  const buttonColor = outline ? "outline" : "primary";
+  const buttonColor = disabled ? "disabled" : outline ? "outline" : "primary";
   const buttonPointer = disabled ? "disabled-button-pointer" : "enabled-button-pointer";
 
   return (

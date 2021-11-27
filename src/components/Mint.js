@@ -34,7 +34,12 @@ function Mint() {
       setContractStatus("You've successfully minted a Character! Check it out on ");
     } catch (error) {
       console.error(error);
-      setContractError(error.message);
+
+      if (error.message.includes("insufficient funds")) {
+        setContractError("Not enough ETH in wallet!");
+      } else {
+        setContractError(error.message);
+      }
       setContractStatus("");
     }
   }
@@ -73,9 +78,21 @@ function Mint() {
       <p className="mint-price-text monospace-font">
         0.04 ETH to Mint
       </p>
-      <Button onClick={mint} disabled={(contractStatus === "Minting...")}>
-        Mint
-      </Button>
+      <div className="row align-center justify-center">
+        <input
+          className="mint-num-input" 
+          type="number" 
+          value={numToMint} 
+          onChange={ e => setNumToMint(e.target.value) } 
+          min="1"
+        />
+        <Button 
+          onClick={mint} 
+          disabled={(contractStatus === "Minting..." || numToMint < 1)}
+        >
+          Mint
+        </Button>
+      </div>
       <div className="monospace-font white-text mint-message-padding">
         <p className="mint-success no-margin">
           { contractStatus }

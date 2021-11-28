@@ -4,7 +4,9 @@ import { ethers } from "ethers";
 import { Home } from './pages';
 
 function getLibrary(provider, connector) {
-  return new ethers.providers.Web3Provider(provider);
+  const library = new ethers.providers.Web3Provider(provider);
+  library.pollingInterval = 12000;
+  return library;
 }
 
 function App() {

@@ -27,7 +27,8 @@
     "compile-contracts": "npx hardhat compile",
     "serve-contracts": "npx hardhat node",
     "deploy-contracts-local": "npx hardhat run scripts/deploy.js --network localhost",
-    "deploy-contracts-rinkeby": "npx hardhat run scripts/deploy.js --network rinkeby"
+    "deploy-contracts-rinkeby": "npx hardhat run scripts/deploy.js --network rinkeby",
+    "deploy-contracts-mainnet": "npx hardhat run scripts/deploy.js --network mainnet"
   },
   "eslintConfig": {
     "extends": [

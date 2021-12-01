@@ -38,6 +38,14 @@ function Footer() {
           Roadmap
         </a>
         <a
+          href="https://etherscan.io/address/0xe600afed52558f0c1f8feeeb128c9b932b7ae4e3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link footer-link monospace-font"
+        >
+          Contract
+        </a>
+        <a
           href="https://github.com/haby-llc/adventure.haby.io"
           target="_blank"
           rel="noopener noreferrer"
@@ -45,11 +53,6 @@ function Footer() {
         >
           Source Code
         </a>
-        <div
-          className="link inactive footer-link monospace-font"
-        >
-          Contract (Coming Soon)
-        </div>
       </div>
 
       <div className="footer-buttons-row">

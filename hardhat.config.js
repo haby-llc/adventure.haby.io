@@ -1,7 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
-const { ALCHEMY_API_URL, PRIVATE_KEY } = process.env;
+const { REACT_APP_ALCHEMY_API_URL, PRIVATE_KEY } = process.env;
 
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => { // eslint-disable-line
@@ -24,7 +24,7 @@ module.exports = {
    networks: {
       hardhat: {},
       rinkeby: {
-         url: ALCHEMY_API_URL,
+         url: REACT_APP_ALCHEMY_API_URL,
          accounts: [`0x${PRIVATE_KEY}`]
       }
    },

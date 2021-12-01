@@ -24,7 +24,7 @@ function Mint() {
       setContractError("");
 
       const mintPrice = await signerContract.getPrice();
-      
+
       const transaction = await signerContract.mintPublic(
         numToMint,
         { value: ethers.utils.parseUnits((numToMint * mintPrice).toString(), "wei") }
@@ -35,11 +35,16 @@ function Mint() {
     } catch (error) {
       console.error(error);
 
-      if (error.message.includes("insufficient funds")) {
-        setContractError("Not enough ETH in wallet!");
+      if (error.message) {
+        if (error.message.includes("insufficient funds")) {
+          setContractError("Not enough ETH in wallet!");
+        } else {
+          setContractError(error.message);
+        }
       } else {
-        setContractError(error.message);
+        setContractError("There was an issue. Please try again!");
       }
+      
       setContractStatus("");
     }
   }

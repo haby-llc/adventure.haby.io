@@ -104,7 +104,7 @@ function Mint() {
           { 
             contractStatus === "You've successfully minted a Character! Check it out on " ? (
               <a
-                href="https://opensea.io/"
+                href="https://opensea.io/collection/adventure-character"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link monospace-font"

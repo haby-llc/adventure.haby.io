@@ -78,7 +78,7 @@ function Footer() {
         </div>
         <div className="footer-icon-button">
           <a
-            href="https://opensea.io/"
+            href="https://opensea.io/HabyLabs?tab=created"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-icon-button-link"

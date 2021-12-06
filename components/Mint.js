@@ -1,9 +1,9 @@
-import './Mint.css';
 import { useState } from 'react';
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { Button } from '../components';
-import CharacterJson from '../contracts/Character.json';
+import styles from '../styles/components/Mint.module.css';
+import CharacterJson from '../artifacts/contracts/character.sol/Character.json';
 
 
 function Mint() {
@@ -80,12 +80,12 @@ function Mint() {
 
   return (
     <div className="column align-center justify-center">
-      <p className="mint-price-text monospace-font">
+      <p className={`monospace-font ${styles.mintPriceText}`}>
         0.04 ETH to Mint
       </p>
       <div className="row align-center justify-center">
         <input
-          className="mint-num-input" 
+          className={styles.mintNumInput} 
           type="number" 
           value={numToMint} 
           onChange={ e => setNumToMint(e.target.value) } 
@@ -98,8 +98,8 @@ function Mint() {
           Mint
         </Button>
       </div>
-      <div className="monospace-font white-text mint-message-padding">
-        <p className="mint-success no-margin">
+      <div className={`monospace-font white-text ${styles.mintMessagePadding}`}>
+        <p className={`no-margin ${styles.mintSuccess}`}>
           { contractStatus }
           { 
             contractStatus === "You've successfully minted a Character! Check it out on " ? (
@@ -114,7 +114,7 @@ function Mint() {
             ) : null
           }
         </p>
-        <p className="mint-error no-margin">
+        <p className={`no-margin ${styles.mintError}`}>
           { contractError }
         </p>
       </div>

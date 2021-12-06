@@ -1,6 +1,7 @@
 /* General Classes */
 
-.app-footer {
+.appFooter {
+  background-color: #000;
   justify-content: space-between;
   padding-top: 8vmin;
   padding-bottom: 8vmin;
@@ -8,39 +9,39 @@
 
 /* Styling for left half of footer */
 
-.footer-left-section {
+.footerLeftSection {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.footer-left-section-column-padding {
+.footerLeftSectionColumnPadding {
   padding-top: 4vmax;
 }
 
-.footer-left-section-top {
+.footerLeftSectionTop {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.haby-labs-logo {
+.habyLabsLogo {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.haby-logo-footer-svg {
+.habyLogoFooterSvg {
   height: 4vmin;
 }
 
-.haby-logo-text {
+.habyLogoText {
   font-size: 2rem;
   padding-left: 0.4em;
   color: #FFF;
 }
 
-.haby-description {
+.habyDescription {
   color: #FFF;
   font-size: 1rem;
   padding-top: 1.5vmin;
@@ -54,37 +55,37 @@
 
 /* Styling for right half of footer */
 
-.footer-right-section {
+.footerRightSection {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 1rem;
 }
 
-.footer-right-section-links {
+.footerRightSectionLinks {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-bottom: 2vmax;
 }
 
-.footer-link {
+.footerLink {
   padding-bottom: 1vmin;
 }
 
-.footer-buttons-row {
+.footerButtonsRow {
   display: flex;
   flex-direction: row;
 }
 
-.footer-icon-button {
+.footerIconButton {
   border: 1px solid rgba(244, 102, 146, 0.6);
   width: 3em;
   height: 3em;
   margin-right: 1em;
 }
 
-.footer-icon-button-link {
+.footerIconButtonLink {
   width: 100%;
   height: 100%;
   display: flex;
@@ -92,6 +93,6 @@
   justify-content: center;
 }
 
-.footer-svg {
+.footerSvg {
   width: 40%;
 }

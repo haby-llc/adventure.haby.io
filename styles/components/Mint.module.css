@@ -1,4 +1,4 @@
-.mint-num-input {
+.mintNumInput {
   margin-right: 1vmax;
   padding: 0 0 0 2vmax;
   font-size: 16px;
@@ -7,22 +7,22 @@
   border: none;
 }
 
-.mint-message-padding {
+.mintMessagePadding {
   padding-top: 1vmax;
   padding-bottom: 1vmax;
 }
 
-.mint-success {
+.mintSuccess {
   font-size: 1em;
   color: #FFF;
 }
 
-.mint-error {
+.mintError {
   font-size: 1em;
   color: #FA5853;
 }
 
-.mint-price-text {
+.mintPriceText {
   color: #BFBFBF;
   font-size: 1.5rem;
   text-align: center;

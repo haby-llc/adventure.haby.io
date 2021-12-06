@@ -1,4 +1,4 @@
-.cta-button {
+.ctaButton {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,11 +6,11 @@
   text-decoration: none;
 }
 
-.enabled-button-pointer {
+.enabledButtonPointer {
   cursor: pointer;
 }
 
-.disabled-button-pointer {
+.disabledButtonPointer {
   cursor: auto;
 }
 

@@ -1,27 +1,27 @@
-import './Title.css';
 import { useMediaQuery } from 'react-responsive';
+import styles from '../styles/components/Title.module.css';
 
 function Title() {
   const isMobile = useMediaQuery({ maxWidth: 480 });
   const need75WidthDescription = useMediaQuery({ minWidth: 800 });
   const need50WidthDescription = useMediaQuery({ minWidth: 1200 });
 
-  let titleDescription = "title-description-100";
+  let titleDescription = styles.titleDescription100;
   if (need50WidthDescription) {
-    titleDescription = "title-description-50";
+    titleDescription = styles.titleDescription50;
   } else if (need75WidthDescription) {
-    titleDescription = "title-description-75";
+    titleDescription = styles.titleDescription75;
   } 
 
   return (
-    <div className={`title ${isMobile ? "side-padding-mobile" : "side-padding"}`}>
-      <div className="title-header">
-        <h1 className="title-header-text no-margin serif-font">
+    <div className={`${styles.title} ${isMobile ? "side-padding-mobile" : "side-padding"}`}>
+      <div className={styles.titleHeader}>
+        <h1 className={`no-margin serif-font ${styles.titleHeaderText}`}>
           Welcome Adventurer!
         </h1>
       </div>
       <div className={titleDescription}>
-        <p className="title-description-text monospace-font">
+        <p className={`monospace-font ${styles.titleDescriptionText}`}>
           Mint your&nbsp;
           <a
             href="https://habylabs.notion.site/Character-0e4068e606a74f0195685e83564046d5"

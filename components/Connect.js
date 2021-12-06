@@ -1,7 +1,7 @@
-import './Connect.css';
 import { useWeb3React } from "@web3-react/core";
 import { injectedConnector, walletConnectConnector } from "../wallet/connectors.js";
 import { Button } from '../components';
+import styles from '../styles/components/Connect.module.css';
 
 function Connect() {
   const { activate } = useWeb3React();
@@ -24,11 +24,11 @@ function Connect() {
 
   return (
     <div className="column">
-      <p className="connect-text monospace-font no-margin">
+      <p className={`monospace-font no-margin ${styles.connectText}`}>
         Connect Wallet
       </p>
       <div className="row align-center justify-center">
-        <div className="connect-button-container">
+        <div className={styles.connectButtonContainer}>
           <Button onClick={connectMetaMask}>
             MetaMask
           </Button>

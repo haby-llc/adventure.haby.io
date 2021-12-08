@@ -1,6 +1,12 @@
+import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
+
 import styles from '../styles/components/Footer.module.css';
 
-import { useMediaQuery } from 'react-responsive';
+import DiscordLogo from '../public/discord-logo-white.svg';
+import TwitterLogo from '../public/twitter-logo-white.svg';
+import OpenSeaLogo from '../public/opensea-logo-transparent.svg';
+import HabyLabsLogo from '../public/logo.svg';
 
 function Footer() {
   const isMobile = useMediaQuery({ maxWidth: 480 });
@@ -43,7 +49,7 @@ function Footer() {
             rel="noopener noreferrer"
             className={styles.footerIconButtonLink}
           >
-            <img src="/discord-logo-white.svg" className={styles.footerSvg} alt="Discord" />
+            <Image src={DiscordLogo} className={styles.footerSvg} alt="Discord" />
           </a>
         </div>
         <div className={styles.footerIconButton}>
@@ -53,7 +59,7 @@ function Footer() {
             rel="noopener noreferrer"
             className={styles.footerIconButtonLink}
           >
-            <img src="/twitter-logo-white.svg" className={styles.footerSvg} alt="Twitter" />
+            <Image src={TwitterLogo} className={styles.footerSvg} alt="Twitter" />
           </a>
         </div>
         <div className={styles.footerIconButton}>
@@ -63,7 +69,7 @@ function Footer() {
             rel="noopener noreferrer"
             className={styles.footerIconButtonLink}
           >
-            <img src="/opensea-logo-transparent.svg" className={styles.footerSvg} alt="Open Sea" />
+            <Image src={OpenSeaLogo} className={styles.footerSvg} alt="Open Sea" />
           </a>
         </div>
       </div>
@@ -78,7 +84,9 @@ function Footer() {
       <div className={`${styles.footerLeftSection} ${isFlexRow ? "" : styles.footerLeftSectionColumnPadding}`}>
         <div className={styles.footerLeftSectionTop}>
           <div className={styles.habyLabsLogo}>
-            <img src="/logo.svg" className={styles.habyLogoFooterSvg} alt="logo" />
+            <div className={styles.habyLogoFooterSvg}>
+              <Image src={HabyLabsLogo} layout="responsive" alt="logo" />
+            </div>
             <p className={`monospace-font no-margin ${styles.habyLogoText}`}>
               <strong>Haby Labs</strong>
             </p>

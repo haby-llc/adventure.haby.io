@@ -4,7 +4,10 @@ import { Header, Footer } from '.'
 
 export default function Layout({ children }) {
   const [windowReady, setWindowReady] = useState(false);
-  useEffect(() => setWindowReady(true));
+  
+  useEffect(() => {
+    setWindowReady(true);
+  }, []);
 
   return (
     <>

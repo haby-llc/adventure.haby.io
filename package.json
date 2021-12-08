@@ -1,6 +1,6 @@
 {
   "name": "adventure.haby.io",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -8,6 +8,7 @@
     "start": "next start",
     "build": "next build",
     "test": "next test",
+    "lint": "next lint",
     "contracts:compile": "npx hardhat compile",
     "contracts:serve": "npx hardhat node",
     "contracts:deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
@@ -47,6 +48,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "chai": "^4.3.4",
+    "eslint": "8.4.1",
+    "eslint-config-next": "12.0.7",
     "ethereum-waffle": "^3.4.0",
     "hardhat": "^2.6.5"
   }

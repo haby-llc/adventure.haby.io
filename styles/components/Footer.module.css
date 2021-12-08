@@ -32,7 +32,8 @@
 }
 
 .habyLogoFooterSvg {
-  height: 4vmin;
+  display: block;
+  width: 4vmin;
 }
 
 .habyLogoText {
@@ -80,9 +81,10 @@
 
 .footerIconButton {
   border: 1px solid rgba(244, 102, 146, 0.6);
-  width: 3em;
-  height: 3em;
+  width: 1.5em;
+  height: 1.5em;
   margin-right: 1em;
+  padding: 0.8em;
 }
 
 .footerIconButtonLink {

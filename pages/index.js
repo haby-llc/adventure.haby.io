@@ -11,7 +11,10 @@ import styles from '../styles/pages/index.module.css';
 
 export default function Home() {
   const [windowReady, setWindowReady] = useState(false);
-  useEffect(() => setWindowReady(true));
+
+  useEffect(() => {
+    setWindowReady(true);
+  }, []);
 
   const { active } = useWeb3React();
 

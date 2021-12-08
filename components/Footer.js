@@ -10,28 +10,12 @@ function Footer() {
     <div className={styles.footerRightSection}>
       <div className={styles.footerRightSectionLinks}>
         <a
-          href="https://habylabs.notion.site/FAQs-da5e0e5851d74d029b70007aa1e2ec61"
+          href="https://habylabs.notion.site/Adventure-4f87d1d22f4a4429bed314240ae5f02e"
           target="_blank"
           rel="noopener noreferrer"
           className={`link monospace-font ${styles.footerLink}`}
         >
-          FAQ
-        </a>
-        <a
-          href="https://habylabs.notion.site/Mission-Vision-Values-1b099b95a05d4139b070f4e8d14a4dda"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`link monospace-font ${styles.footerLink}`}
-        >
-          Values
-        </a>
-        <a
-          href="https://habylabs.notion.site/00152d0c553644629158b4701ce451d4?v=fc026e7cc67a4672a2b6d980cf8cbed0"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`link monospace-font ${styles.footerLink}`}
-        >
-          Roadmap
+          Notion
         </a>
         <a
           href="https://etherscan.io/address/0xe600afed52558f0c1f8feeeb128c9b932b7ae4e3"

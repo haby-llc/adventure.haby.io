@@ -22,7 +22,7 @@ function Title() {
       </div>
       <div className={titleDescription}>
         <p className={`monospace-font ${styles.titleDescriptionText}`}>
-          Mint your&nbsp;
+          Mint your{' '}
           <a
             href="https://habylabs.notion.site/Character-0e4068e606a74f0195685e83564046d5"
             target="_blank"
@@ -30,8 +30,8 @@ function Title() {
             className="link monospace-font"
           >
             Character
-          </a> and join a new
-          world of adventure that is inspired by and built on top of&nbsp; 
+          </a>{' '}
+          and join a new world of adventure that is inspired by and built on top of{' '}
           <a
             href="https://www.lootproject.com/"
             target="_blank"
@@ -39,9 +39,9 @@ function Title() {
             className="link monospace-font"
           >
             Loot
-          </a>.
-          Your character is randomly generated and stored on chain. Each 
-          character will have&nbsp;
+          </a>
+          . Your character is randomly generated and stored on chain. Each 
+          character will have{' '}
           <a
             href="https://habylabs.notion.site/Stats-8b5e87f09c974062b7ddc6930231ca36"
             target="_blank"
@@ -49,17 +49,26 @@ function Title() {
             className="link monospace-font"
           >
             Stats
-          </a> and skills. 
-          Use them to clear&nbsp;
+          </a>{' '}
+          and skills. Use them to challenge the{' '}
           <a
-            href="https://habylabs.notion.site/Dungeon-5e1f20c2f53940eabddbee2af7ac9a31"
+            href="https://habylabs.notion.site/Dungeon-Tower-5e1f20c2f53940eabddbee2af7ac9a31"
             target="_blank"
             rel="noopener noreferrer"
             className="link monospace-font"
           >
-            Dungeons
-          </a> and earn gold.
-          Be the adventurer you were always born to be.
+            Dungeon Tower
+          </a>{' '}
+          and conquer{' '}
+          <a
+            href="https://habylabs.notion.site/Castles-e07ac1d6e7c445f39192653eade5dd2b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link monospace-font"
+          >
+            Castles
+          </a> 
+          . Be the adventurer you were always born to be.
         </p>
       </div>
     </div>

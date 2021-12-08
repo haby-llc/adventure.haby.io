@@ -88,7 +88,7 @@ function Mint() {
           className={styles.mintNumInput} 
           type="number" 
           value={numToMint} 
-          onChange={ e => setNumToMint(e.target.value) } 
+          onChange={ e => setNumToMint(parseInt(e.target.value)) } 
           min="1"
         />
         <Button 

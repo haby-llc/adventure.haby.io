@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/components/Layout.module.css';
-import Footer from './Footer.js';
+import { Header, Footer } from '.'
 
 export default function Layout({ children }) {
   const [windowReady, setWindowReady] = useState(false);
@@ -10,6 +10,7 @@ export default function Layout({ children }) {
     <>
       <main>
         <div className={styles.layoutContainer}>
+          {windowReady ? <Header /> : null}
           {children}
         </div>
       </main>

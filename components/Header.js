@@ -18,7 +18,7 @@ function Header() {
       </div>
       <div>
         <a
-          href="https://habylabs.notion.site/Roadmap-c06624b762d949a5800e4921e16a637b"
+          href="https://habylabs.notion.site/Adventure-4f87d1d22f4a4429bed314240ae5f02e"
           target="_blank"
           rel="noopener noreferrer"
           className={`${styles.headerLink} ${styles.navLink}`}

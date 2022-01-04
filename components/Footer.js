@@ -16,12 +16,12 @@ function Footer() {
     <div className={styles.footerRightSection}>
       <div className={styles.footerRightSectionLinks}>
         <a
-          href="https://habylabs.notion.site/Adventure-4f87d1d22f4a4429bed314240ae5f02e"
+          href="https://habylabs.notion.site/Mission-Values-1b099b95a05d4139b070f4e8d14a4dda"
           target="_blank"
           rel="noopener noreferrer"
           className={`link monospace-font ${styles.footerLink}`}
         >
-          Notion
+          Values
         </a>
         <a
           href="https://etherscan.io/address/0xe600afed52558f0c1f8feeeb128c9b932b7ae4e3"

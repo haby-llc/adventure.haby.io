@@ -1,5 +1,5 @@
 import { useWeb3React } from "@web3-react/core";
-import { injectedConnector, walletConnectConnector } from "../wallet/connectors.js";
+import { injectedConnector, walletConnectConnector } from "../util/connectors.js";
 import { Button } from '../components';
 import styles from '../styles/components/Connect.module.css';
 

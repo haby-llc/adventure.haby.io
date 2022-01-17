@@ -2,6 +2,14 @@ function getAlchemyURL() {
   return `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`
 }
 
+function logCalc(t, logBase, exp) {
+  if (logBase === 2) {
+    return Math.round(Math.log2(Math.pow(t, exp) + 1) + 5)
+  } 
+  
+  return Math.round(Math.log10(Math.pow(t, exp) + 1) + 5)
+}
+
 async function fetchAlchemyData(method, params) {
   try {
     console.log(getAlchemyURL())
@@ -32,7 +40,7 @@ async function getSTR(address) {
       "fromAddress": address,
     }])
 
-    return res.result.transfers.length
+    return logCalc(res.result.transfers.length, 2, 3)
   } catch (error) {
    console.log(error)
    return 0 

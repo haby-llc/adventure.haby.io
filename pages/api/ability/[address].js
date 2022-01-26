@@ -57,7 +57,6 @@ export default async function handler(req, res) {
   const toTx = await getToTx(fromBlock, address)
   const tokens = await getTokens(address)
   const nftCount = await getNFTCount(address)
-  
 
   const STR = getSTR(fromTx)
   const DEX = getDEX(tokens)

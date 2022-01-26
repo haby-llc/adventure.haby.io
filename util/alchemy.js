@@ -106,9 +106,12 @@ async function getTokens(address) {
 
 async function getNFTCount(address) {
   try {
-    const res = await fetch(getAlchemyNFTUrl(address))
-    const json = res.json()
-    return json.ownedNfts.totalCount
+    const res = await fetch(getAlchemyNFTUrl(address), {
+      method: 'GET',
+      redirect: 'follow'
+    })
+    const json = await res.json()
+    return json.totalCount
   } catch (error) {
     console.log(error)
     return 0

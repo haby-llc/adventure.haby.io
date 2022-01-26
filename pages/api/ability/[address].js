@@ -33,12 +33,20 @@ function getINT(nftCount) {
 }
 
 function getWIS(firstTx, fromTx, toTx) {
-  const latestFromTx = fromTx[fromTx.length - 1]
-  const latestToTx = toTx[toTx.length - 1]
-  const latestTx = (parseInt(latestFromTx.blockNum, 16) > parseInt(latestToTx.blockNum, 16)) ? latestFromTx : latestToTx
+  if (firstTx) {
+    const latestFromTx = fromTx.length > 0 ? fromTx[fromTx.length - 1].blockNum : 0
+    const latestToTx = toTx.length > 0 ? toTx[toTx.length - 1].blockNum : 0
 
-  const blockDiff = parseInt(latestTx.blockNum, 16) - parseInt(firstTx.blockNum, 16)
-  return logCalc(blockDiff, 10, 3)
+    const latestFromTxInt = parseInt(latestFromTx, 16)
+    const latestToTxInt = parseInt(latestToTx, 16)
+
+    const latestTx = (latestFromTxInt > latestToTxInt) ? latestFromTxInt : latestToTxInt
+
+    const blockDiff = latestTx - parseInt(firstTx.blockNum, 16)
+    return logCalc(blockDiff, 10, 3)
+  }
+  
+  return logCalc(0, 10, 3)
 }
 
 function getCHA(fromTx, toTx) {
@@ -46,7 +54,7 @@ function getCHA(fromTx, toTx) {
   const fromAddresses = toTx.map(tx => tx.from);
 
   const dedupAddresses = [...new Set([...toAddresses, ...fromAddresses])];
-  return logCalc(dedupAddresses.length, 10, 5)
+  return logCalc(dedupAddresses.length, 2, 3)
 }
 
 export default async function handler(req, res) {

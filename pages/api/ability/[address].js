@@ -8,11 +8,10 @@ import {
 } from "../../../util/alchemy"
 
 function logCalc(t, logBase, exp) {
-  if (logBase === 2) {
-    return Math.round(Math.log2(Math.pow(t, exp) + 1) + 5)
-  } 
-  
-  return Math.round(Math.log10(Math.pow(t, exp) + 1) + 5)
+  const x = Math.pow(t, exp) + 1
+  const logx = Math.log(x) / Math.log(logBase)
+
+  return Math.round(logx + 5)
 }
 
 function getSTR(fromTx) {
@@ -46,7 +45,7 @@ function getWIS(firstTx, fromTx, toTx) {
     return logCalc(blockDiff, 10, 3)
   }
   
-  return logCalc(0, 10, 3)
+  return logCalc(0, 10, 5)
 }
 
 function getCHA(fromTx, toTx) {
@@ -74,9 +73,9 @@ export default async function handler(req, res) {
   const CHA = getCHA(fromTx, toTx)
 
   const ability = {
-    LVL: Math.round((STR + DEX + CON + INT + WIS + CHA) / 5),
+    LVL: Math.round((STR + DEX + CON + INT + WIS + CHA) / 5) - 5,
     HP: 10 * (STR + DEX + CON) + 50,
-    MP: 10 * (INT + WIS + CHA),
+    MP: 10 * (INT + WIS + CHA) + 50,
     STR,
     DEX,
     CON,
@@ -85,5 +84,5 @@ export default async function handler(req, res) {
     CHA
   }
 
-  res.status(200).json({ ability })
+  res.status(200).json({ address: ability })
 }

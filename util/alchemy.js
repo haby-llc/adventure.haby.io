@@ -94,9 +94,35 @@ async function getToTx(fromBlock, address) {
   }  
 }
 
+async function getContractAddresses(address) {
+  try {
+    const resFrom = await fetchAlchemyData('alchemy_getAssetTransfers', [{
+      "fromBlock": "0x1",
+      "fromAddress": address,
+      "excludeZeroValue": true,
+      "category": ["erc20"],
+    }])
+
+    const resTo = await fetchAlchemyData('alchemy_getAssetTransfers', [{
+      "fromBlock": "0x1",
+      "toAddress": address,
+      "excludeZeroValue": true,
+      "category": ["erc20"],
+    }])
+
+    const fromContractAddress = resFrom.result.transfers.map(tx => tx.rawContract.address)
+    const toContractAddress = resTo.result.transfers.map(tx => tx.rawContract.address)
+    return [...new Set([...fromContractAddress, ...toContractAddress])];
+  } catch (error) {
+    console.log(error)
+    return []
+  }
+}
+
 async function getTokens(address) {
   try {
-    const res = await fetchAlchemyData('alchemy_getTokenBalances', [address, 'DEFAULT_TOKENS'])
+    const contractAddresses = await getContractAddresses(address)
+    const res = await fetchAlchemyData('alchemy_getTokenBalances', [address, contractAddresses])
     return res.result.tokenBalances
   } catch (error) {
     console.log(error)

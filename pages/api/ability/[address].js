@@ -7,28 +7,26 @@ import {
   getNFTCount,
 } from "../../../util/alchemy"
 
-function logCalc(t, logBase, exp) {
-  const x = Math.pow(t, exp) + 1
-  const logx = Math.log(x) / Math.log(logBase)
-
-  return Math.round(logx + 5)
+function logCalc(t, multiple = 1) {
+  const logx = Math.log2(t + 1)
+  return Math.round(multiple * Math.pow(logx, 2)) + 5
 }
 
 function getSTR(fromTx) {
-  return logCalc(fromTx.length, 2, 3)
+  return logCalc(fromTx.length)
 }
 
 function getDEX(tokens) {
   const ownedTokens = tokens.filter(({ tokenBalance }) => parseInt(tokenBalance, 16) > 0)
-  return logCalc(ownedTokens.length, 2, 5)
+  return logCalc(ownedTokens.length, 2)
 }
 
 function getCON(toTx) {
-  return logCalc(toTx.length, 2, 3)
+  return logCalc(toTx.length)
 }
 
 function getINT(nftCount) {
-  return logCalc(nftCount, 2, 5)
+  return logCalc(nftCount)
 }
 
 function getWIS(firstTx, fromTx, toTx) {
@@ -42,10 +40,10 @@ function getWIS(firstTx, fromTx, toTx) {
     const latestTx = (latestFromTxInt > latestToTxInt) ? latestFromTxInt : latestToTxInt
 
     const blockDiff = latestTx - parseInt(firstTx.blockNum, 16)
-    return logCalc(blockDiff, 10, 3)
+    return logCalc(blockDiff / 10000)
   }
   
-  return logCalc(0, 10, 5)
+  return logCalc(0)
 }
 
 function getCHA(fromTx, toTx) {
@@ -53,7 +51,7 @@ function getCHA(fromTx, toTx) {
   const fromAddresses = toTx.map(tx => tx.from);
 
   const dedupAddresses = [...new Set([...toAddresses, ...fromAddresses])];
-  return logCalc(dedupAddresses.length, 2, 3)
+  return logCalc(dedupAddresses.length)
 }
 
 export default async function handler(req, res) {
@@ -73,7 +71,7 @@ export default async function handler(req, res) {
   const CHA = getCHA(fromTx, toTx)
 
   const ability = {
-    LVL: Math.round((STR + DEX + CON + INT + WIS + CHA) / 5) - 5,
+    LVL: Math.round((STR + DEX + CON + INT + WIS + CHA) / 6) - 4,
     HP: 10 * (STR + DEX + CON) + 50,
     MP: 10 * (INT + WIS + CHA) + 50,
     STR,

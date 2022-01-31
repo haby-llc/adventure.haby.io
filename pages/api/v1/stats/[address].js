@@ -5,7 +5,7 @@ import {
   getToTx,
   getTokens,
   getNFTCount,
-} from "../../../util/alchemy"
+} from "../../../../util/alchemy"
 
 function logCalc(t, multiple = 1) {
   const logx = Math.log2(t + 1)

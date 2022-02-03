@@ -17,6 +17,9 @@ function Header() {
         </Link>
       </div>
       <div>
+        <Link href='/stats'>
+          <a className={`${styles.headerLink} ${styles.navLink}`}>Stats</a>
+        </Link>
         <a
           href="https://habylabs.notion.site/Adventure-4f87d1d22f4a4429bed314240ae5f02e"
           target="_blank"
